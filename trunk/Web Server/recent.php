@@ -1,4 +1,14 @@
 <?php
+// ============================================================================
+//
+//  File: recent.php
+//  Parameters: limit=20
+//  Purpose: Shows the most recent limit images
+//  ToDo: Nothing. 
+//
+// ===========================================================================
+
+
 set_time_limit(0);
 
 $images = scandir(dirname(realpath(__FILE__)), 1);
