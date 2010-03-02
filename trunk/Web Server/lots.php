@@ -17,7 +17,7 @@
 
 require_once("db_connection.php");
 $conn = connect_to_db();
-$img_url = 'http://' . $_SERVER["HTTP_HOST"] . '/processed/';
+$img_url = 'http://' . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PATH_INFO"]) . '/processed/';
 
 header("Content-type: text/xml");
 

@@ -12,7 +12,7 @@
 set_time_limit(0);
 
 $images = scandir(dirname(realpath(__FILE__)), 1);
-$base_url = 'http://' . $_SERVER["HTTP_HOST"] . '/';
+$base_url = 'http://' . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PATH_INFO"]) . '/';
 
 header("Content-type: text/xml");
 
