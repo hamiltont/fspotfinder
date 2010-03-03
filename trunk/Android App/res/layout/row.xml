@@ -1,0 +1,22 @@
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<TextView android:id="@+row/lot_title" android:text="Title"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:textSize="22sp" android:layout_marginTop="3sp"
+		android:layout_marginLeft="6sp" android:layout_marginBottom="-5sp" />
+
+	<TextView android:id="@+row/lot_permits" android:layout_below="@row/lot_title"
+		android:layout_height="wrap_content" android:text="Permits"
+		android:layout_width="wrap_content" android:layout_alignLeft="@row/lot_title"
+		android:layout_marginLeft="8sp" android:paddingBottom="4sp"
+		android:textSize="10dip" />
+
+	<TextView android:id="@+row/number_spots"
+		android:layout_alignBaseline="@row/lot_title"
+		android:layout_alignParentRight="true" android:layout_height="wrap_content"
+		android:text="5 spots" android:textSize="20sp" android:layout_width="wrap_content"
+		android:layout_marginRight="10sp" />
+
+</RelativeLayout>

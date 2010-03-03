@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Main!</string>
+    <string name="app_name">F-Spot</string>
+<color name="light_gray">#CCCDCDC1</color>
+<color name="neon_green">#38FF4C</color>
+</resources>
