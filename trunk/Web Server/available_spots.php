@@ -15,7 +15,13 @@
 // ===========================================================================
 
 
-// do we really need this.  lots.php has all of this info?
-
+// Adam: do we really need this.  lots.php has all of this info?
+// Hamy: I think it's debatable. I see this as a tiny, very low computational
+//       way to access the number of spots in a single lot. This would be polled
+//       by the phone when it was sitting on a single lot's details page. If
+//       we include this with lots.php, I would not want to send along all the 
+//       info that lots.php has (such as lot pretty name, lot id, etc), only a 
+//       subset of that info. Therefore, I added this file, as I favor more files
+//       and fewer URL parameters
 
 ?>
