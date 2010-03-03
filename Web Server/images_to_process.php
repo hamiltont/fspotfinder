@@ -25,7 +25,7 @@ foreach($images as $im){
 		echo ' lot_id="' . $lot_id . '"';
     echo ' lot_layout="' . $base_url . 'layout.php?lot=' . $lot_id . '"';
     echo ' img_url="' . $base_url . $im . '"';
-    echo ' />';
+    echo " />\n";
 	}
 }
 
