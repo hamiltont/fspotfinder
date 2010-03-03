@@ -1,0 +1,92 @@
+<regions>
+	<region>
+		<point x="54" y="109" />
+		<point x="36" y="188" />
+		<point x="73" y="185" />
+		<point x="85" y="108" />
+	</region>
+	<region>
+		<point x="138" y="105" />
+		<point x="105" y="109" />
+		<point x="80" y="181" />
+		<point x="125" y="185" />
+	</region>
+	<region>
+		<point x="149" y="105" />
+		<point x="136" y="181" />
+		<point x="175" y="185" />
+		<point x="185" y="105" />
+	</region>
+	<region>
+		<point x="196" y="105" />
+		<point x="186" y="182" />
+		<point x="228" y="184" />
+		<point x="236" y="106" />
+	</region>
+	<region>
+		<point x="249" y="103" />
+		<point x="239" y="183" />
+		<point x="280" y="182" />
+		<point x="285" y="104" />
+	</region>
+	<region>
+		<point x="299" y="104" />
+		<point x="291" y="177" />
+		<point x="332" y="177" />
+		<point x="338" y="101" />
+	</region>
+	<region>
+		<point x="389" y="102" />
+		<point x="349" y="103" />
+		<point x="342" y="178" />
+		<point x="388" y="183" />
+	</region>
+	<region>
+		<point x="438" y="103" />
+		<point x="399" y="103" />
+		<point x="399" y="181" />
+		<point x="444" y="183" />
+	</region>
+	<region>
+		<point x="490" y="104" />
+		<point x="452" y="104" />
+		<point x="452" y="178" />
+		<point x="495" y="187" />
+	</region>
+	<region>
+		<point x="545" y="104" />
+		<point x="503" y="103" />
+		<point x="508" y="183" />
+		<point x="552" y="187" />
+	</region>
+	<region>
+		<point x="596" y="109" />
+		<point x="553" y="106" />
+		<point x="558" y="177" />
+		<point x="601" y="184" />
+	</region>
+	<region>
+		<point x="642" y="109" />
+		<point x="603" y="107" />
+		<point x="614" y="185" />
+		<point x="657" y="185" />
+	</region>
+	<region>
+		<point x="691" y="111" />
+		<point x="653" y="108" />
+		<point x="666" y="184" />
+		<point x="702" y="187" />
+	</region>
+	<region>
+		<point x="744" y="115" />
+		<point x="704" y="110" />
+		<point x="721" y="180" />
+		<point x="758" y="192" />
+	</region>
+	<region>
+		<point x="792" y="111" />
+		<point x="753" y="111" />
+		<point x="768" y="187" />
+		<point x="794" y="189" />
+	</region>
+</regions>
