@@ -33,7 +33,7 @@ $rs = mysql_query($query);
 while($row = mysql_fetch_assoc($rs)){
   echo '<lot';
   echo ' id="' . $row['lot_id'] . '"';
-  echo ' spots="' . $row['avail_spots' . '"';
+  echo ' spots="' . $row['avail_spots'] . '"';
 
   if ($is_mobile == false)
   {  
