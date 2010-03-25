@@ -21,18 +21,17 @@
 
 	<TextView android:id="@+details/spot_time_counter"
 		android:layout_height="wrap_content" android:layout_width="wrap_content"
-		android:text="3 sec" android:layout_toRightOf="@details/spots_open_as_of"
+		android:text="3" android:layout_toRightOf="@details/spots_open_as_of"
 		android:layout_alignBaseline="@details/spots_open" android:textSize="20dip" />
 
-	<TextView android:layout_height="wrap_content"
-		android:layout_width="wrap_content" android:text=" ago"
-		android:textSize="20dip" android:layout_toRightOf="@details/spot_time_counter"
-		android:layout_alignBaseline="@details/spots_open" />
+	<ImageView android:id="@+details/lot_image"
+		android:layout_width="wrap_content" android:layout_below="@details/spots_open_as_of"
+		android:layout_centerHorizontal="true" android:layout_height="wrap_content" />
 
-	<ImageView android:layout_width="wrap_content"
-		android:layout_below="@details/spots_open_as_of"
-		android:layout_centerHorizontal="true" android:layout_height="wrap_content"
-		android:id="@+details/lot_image" />
+	<TextView android:id="@+details/image_time_counter"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_alignRight="@details/lot_image"
+		android:layout_alignBottom="@details/lot_image" android:text="this is a test" />
 
 	<TextView android:id="@+details/permits" android:text="F Permit"
 		android:textSize="10dip" android:layout_height="wrap_content"

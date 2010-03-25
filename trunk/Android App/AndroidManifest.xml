@@ -14,6 +14,8 @@
 
 		<activity android:screenOrientation="portrait" android:name=".Details"
 			android:theme="@android:style/Theme.Light.NoTitleBar" />
+			
+		<service android:name=".SpotsMonitor" />
 
 	</application>
 

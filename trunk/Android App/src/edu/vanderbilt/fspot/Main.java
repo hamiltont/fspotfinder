@@ -30,6 +30,8 @@ public class Main extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 
+		lots_.updateLotArray();
+		
 		lots_.testStorage(this);
 
 		final TextView lot_name = (TextView) v.findViewById(R.row.lot_title);

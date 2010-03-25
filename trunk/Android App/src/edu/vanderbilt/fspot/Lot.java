@@ -89,4 +89,6 @@ public class Lot {
 
 		return image;
 	}
+	
+	
 }
