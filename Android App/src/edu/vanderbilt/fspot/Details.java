@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,10 +43,10 @@ public class Details extends Activity implements ISpotsAvailable {
 
 		final String id = getIntent().getExtras().getString(
 				Constants.KEY_LOT_NAME);
-		final Long lotsKey = getIntent().getExtras().getLong(Constants.LOTS);
+		final Long lotArrayKey = getIntent().getExtras().getLong(Constants.LotArrayKey);
 		final LotArray lots = (LotArray) Constants.interActivityStorage
-				.get(lotsKey);
-		Constants.interActivityStorage.remove(lotsKey);
+				.get(lotArrayKey);
+		Constants.interActivityStorage.remove(lotArrayKey);
 
 		currentLot_ = lots.findLotById(id);
 
@@ -60,8 +59,8 @@ public class Details extends Activity implements ISpotsAvailable {
 		Constants.interActivityStorage.put(SpotsMonitor.KEY_LISTENER, this);
 		this.startService(service);
 
-		lotImage_.setImageDrawable(currentLot_.getImage(getResources()));
-		lotImage_.invalidate();
+		//lotImage_.setImageDrawable(currentLot_.getImage(getResources()));
+		//lotImage_.invalidate();
 	}
 	
 	@Override
@@ -100,7 +99,6 @@ public class Details extends Activity implements ISpotsAvailable {
 	}
 
 	public void updateSpotsAvailable(final Integer spotsAvailable) {
-		Log.i("tag", "Update received + " + spotsAvailable);
 		runOnUiThread(new Runnable() {
 
 			public void run() {

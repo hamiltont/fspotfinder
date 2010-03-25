@@ -53,6 +53,8 @@ public class SpotsMonitor extends Service {
 
 		threadBody = new SpotsRunnable();
 		new Thread(threadBody).start();
+		
+		Log.i("ActivityManager", "Started service: edu.vanderbilt.fspot/.SpotsMonitor");
 	}
 
 	@Override
@@ -79,7 +81,7 @@ public class SpotsMonitor extends Service {
 		final StringBuffer urlString = new StringBuffer(Constants.Server_URL);
 		urlString.append(Constants.Server_Latest_URI);
 		urlString.append("?lot=");
-		// urlString.append(lotId);
+		//urlString.append(lotId);  // We only have one image feed, not one for each lot
 		urlString.append("fspot");
 
 		URL url = null;
@@ -88,7 +90,7 @@ public class SpotsMonitor extends Service {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		
+
 		BitmapDrawable image = null;
 		try {
 			image = new BitmapDrawable(url.openStream());
@@ -96,8 +98,11 @@ public class SpotsMonitor extends Service {
 			e.printStackTrace();
 		}
 
-		if (image.getIntrinsicHeight() == -1)
+		if (image.getIntrinsicHeight() == -1) {
+			Log.i("fspot", "Bad image returned from server url "
+					+ urlString.toString());
 			return null;
+		}
 		return image;
 	}
 
@@ -117,8 +122,7 @@ public class SpotsMonitor extends Service {
 				final StringBuffer url = new StringBuffer(Constants.Server_URL);
 				url.append(Constants.Server_Available_Spots_URI);
 				url.append("?lot=");
-				// url.append(lotId);
-				url.append("towers");
+				url.append(lotId);
 
 				final HttpGet get = new HttpGet(url.toString());
 
@@ -134,12 +138,16 @@ public class SpotsMonitor extends Service {
 				}
 
 				if (resp == null)
-					Log.e("tag", "Some error occurred, we had no response");
+					Log.e("fspot",
+							"Some error occurred, we had no response from "
+									+ url.toString());
 				else if (resp.getStatusLine().getStatusCode() != 200)
-					Log.e("tag", "Server returned a Status-Code: "
-							+ resp.getStatusLine().getStatusCode());
+					Log.e("fspot", "Server returned a Status-Code: "
+							+ resp.getStatusLine().getStatusCode() + " from "
+							+ url.toString());
 				else if (bao.size() == 0)
-					Log.e("tag", "No data sent back from server");
+					Log.e("fspot", "No data sent back from server url at "
+							+ url.toString());
 
 				String result = null;
 				try {
@@ -149,7 +157,6 @@ public class SpotsMonitor extends Service {
 				}
 
 				if (result != null && result.equals("") == false) {
-					Log.i("tag", result);
 					String[] values = result.split(",");
 					final long newTimestamp = Long.parseLong(values[0]);
 					final int spots = Integer.parseInt(values[1]);

@@ -8,13 +8,11 @@
 		android:background="@android:drawable/title_bar" android:gravity="center_vertical"
 		android:textStyle="bold" android:textColor="@android:color/white" />
 
-	<TextView android:id="@+main/available_spot"
-		android:visibility="gone" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="Loading Availble Spot Data . . . "
-		android:background="@android:drawable/title_bar" android:gravity="center_vertical"
-		android:textStyle="bold" android:textColor="@android:color/white" />
-
-
 	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
 		android:layout_height="0dip" android:layout_weight="1" />
+
+	<TextView android:id="@+main/spot_time_counter"
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
+		android:text="Data Not Yet Loaded" android:gravity="center_horizontal"
+		android:textSize="22sp" />
 </LinearLayout>

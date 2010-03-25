@@ -3,31 +3,20 @@
  */
 package edu.vanderbilt.fspot;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import com.google.android.maps.GeoPoint;
-
-
-
-import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 /**
  * @author Hamilton Turner
+ * 
+ * TODO - LotAdapter.java reads from this ArrayList inside of it's getView
+ * method, and a separate thread calls the {@link LotAdapter#acceptNewSpotsInfo(java.util.HashMap)}
+ * function, which writes to this. Aka there is a race condition here, which could be 
+ * fixed by making the backing list here be concurrent safe. At this point, the time to 
+ * do that is not worth it, if it crashes it can just be re-started
  * 
  */
 public class LotArray extends ArrayList<Lot> implements Parcelable {
@@ -38,7 +27,7 @@ public class LotArray extends ArrayList<Lot> implements Parcelable {
 		add(l);
 		l = new Lot("Towers Lot 2", "towers2");
 		add(l);
-		l = new Lot("Kensington", "ks");
+		l = new Lot("Kensington", "kensington");
 		add(l);
 		l = new Lot("Frat Row 1", "fr1");
 		add(l);
@@ -46,45 +35,8 @@ public class LotArray extends ArrayList<Lot> implements Parcelable {
 		add(l);
 		l = new Lot("Rec Center", "rec");
 		add(l);
-	}
-
-	public void updateLotArray() {
-
-		final HttpClient c = new DefaultHttpClient();
-		final HttpPost post = new HttpPost(Constants.Server_URL
-				+ Constants.Server_Lots_URI);
-
-		HttpResponse resp = null;
-		ByteArrayOutputStream bao = new ByteArrayOutputStream();
-		try {
-			resp = c.execute(post);
-			resp.getEntity().writeTo(bao);
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		if (resp == null) {
-			Log.e("tag", "Some error occurred, we had no response");
-			return;
-		} else if (resp.getStatusLine().getStatusCode() != 200) {
-			Log.e("tag", "Server returned a Status-Code: "
-					+ resp.getStatusLine().getStatusCode());
-			return;
-		} else if (bao.size() == 0) {
-			Log.e("tag","No data sent back from server");
-			return;
-		}
-
-		String result = null;
-		try {
-			result = bao.toString("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		Log.i("tag", result);
-
+		
+		
 	}
 
 	public List<String> getLotNames() {
@@ -108,23 +60,14 @@ public class LotArray extends ArrayList<Lot> implements Parcelable {
 		return "";
 	}
 
-	public void testStorage(Context c) {
-		Lot l = get(0);
-		l.storeImage("some string image data", c);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see android.os.Parcelable#describeContents()
 	 */
 	public int describeContents() {
 		return 0;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see android.os.Parcelable#writeToParcel(android.os.Parcel, int)
 	 */
 	public void writeToParcel(Parcel dest, int flags) {

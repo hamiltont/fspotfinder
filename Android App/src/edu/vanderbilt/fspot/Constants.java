@@ -20,7 +20,7 @@ public class Constants {
 	public static final String Local_Images_Folder = "/f-spot";
 
 	public static final String KEY_LOT_NAME = "lot name";
-	public static final String LOTS = "lots";
+	public static final String LotArrayKey = "lots";
 
 	public static final HashMap<Long, Object> interActivityStorage = new HashMap<Long, Object>();
 }
