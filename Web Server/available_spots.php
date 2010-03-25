@@ -21,7 +21,7 @@ $lot = isset($_GET['lot'])? mysql_real_escape_string(strip_tags($_GET['lot'])): 
 
 if(!$lot) die("");
 
-$query = "SELECT img_timestamp, avail_spots FROM lots WHERE name = '$lot' LIMIT 1";
+$query = "SELECT img_timestamp, avail_spots FROM lots WHERE lot_id = '$lot' LIMIT 1";
 
 $rs = mysql_query($query);
 

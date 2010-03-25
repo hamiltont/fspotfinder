@@ -16,7 +16,7 @@ $lot = isset($_GET['lot'])? mysql_real_escape_string(strip_tags($_GET['lot'])): 
 
 if(!$lot) die("");
 
-$query = "SELECT layout FROM lots WHERE name = '$lot'";
+$query = "SELECT layout FROM lots WHERE lot_id = '$lot'";
 
 $rs = mysql_query($query);
 
