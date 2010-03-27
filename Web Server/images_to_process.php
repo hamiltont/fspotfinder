@@ -20,7 +20,7 @@ echo "<images>\n";
 
 foreach($images as $im){
 	if(strpos($im,'jpg') != 0){
-    $lot_id = 'towers'; //todo  parse this from the filename
+    $lot_id = 'towers1'; //todo  parse this from the filename
     echo '<image';
 		echo ' lot_id="' . $lot_id . '"';
     echo ' lot_layout="' . $base_url . 'layout.php?lot=' . $lot_id . '"';
