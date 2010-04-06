@@ -53,8 +53,9 @@ public class SpotsMonitor extends Service {
 
 		threadBody = new SpotsRunnable();
 		new Thread(threadBody).start();
-		
-		Log.i("ActivityManager", "Started service: edu.vanderbilt.fspot/.SpotsMonitor");
+
+		Log.i("ActivityManager",
+				"Started service: edu.vanderbilt.fspot/.SpotsMonitor");
 	}
 
 	@Override
@@ -81,7 +82,8 @@ public class SpotsMonitor extends Service {
 		final StringBuffer urlString = new StringBuffer(Constants.Server_URL);
 		urlString.append(Constants.Server_Latest_URI);
 		urlString.append("?lot=");
-		//urlString.append(lotId);  // We only have one image feed, not one for each lot
+		// urlString.append(lotId); // We only have one image feed, not one for
+		// each lot
 		urlString.append("fspot");
 
 		URL url = null;
@@ -103,6 +105,7 @@ public class SpotsMonitor extends Service {
 					+ urlString.toString());
 			return null;
 		}
+
 		return image;
 	}
 

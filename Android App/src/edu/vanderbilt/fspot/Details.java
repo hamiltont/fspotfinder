@@ -43,37 +43,47 @@ public class Details extends Activity implements ISpotsAvailable {
 
 		final String id = getIntent().getExtras().getString(
 				Constants.KEY_LOT_NAME);
-		final Long lotArrayKey = getIntent().getExtras().getLong(Constants.LotArrayKey);
-		final LotArray lots = (LotArray) Constants.interActivityStorage
+		final Long lotArrayKey = getIntent().getExtras().getLong(
+				Constants.LotArrayKey);
+		LotArray lots = (LotArray) Constants.interActivityStorage
 				.get(lotArrayKey);
 		Constants.interActivityStorage.remove(lotArrayKey);
-
+		
+		// If someone is trying to start Details directly from the OS, and not from 
+		// using the Main Activity
+		if (lots == null)
+			lots = new LotArray();
+		
 		currentLot_ = lots.findLotById(id);
 
 		lotName_.setText(currentLot_.getName());
 		lotName_.invalidate();
-		
+
 		final Intent service = new Intent(this, SpotsMonitor.class);
 		final String lotID = currentLot_.getId();
 		service.putExtra(SpotsMonitor.KEY_LOT_ID, lotID);
 		Constants.interActivityStorage.put(SpotsMonitor.KEY_LISTENER, this);
 		this.startService(service);
-
-		//lotImage_.setImageDrawable(currentLot_.getImage(getResources()));
-		//lotImage_.invalidate();
 	}
-	
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+
+		onDestroy();
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		
+
 		final Intent service = new Intent(this, SpotsMonitor.class);
 		stopService(service);
 	}
-	
+
 	public void updateImage(final BitmapDrawable newImage) {
 		runOnUiThread(new Runnable() {
-			
+
 			public void run() {
 				final Calendar now = new GregorianCalendar();
 				final StringBuffer time = new StringBuffer();
@@ -88,10 +98,10 @@ public class Details extends Activity implements ISpotsAvailable {
 				if (sec < 10)
 					time.append("0");
 				time.append(sec);
-				
+
 				imageTimeCounter_.setText(time.toString());
 				imageTimeCounter_.invalidate();
-				
+
 				lotImage_.setImageDrawable(newImage);
 				lotImage_.invalidate();
 			}
@@ -115,14 +125,14 @@ public class Details extends Activity implements ISpotsAvailable {
 				if (sec < 10)
 					time.append("0");
 				time.append(sec);
-				
+
 				spotTimeCounter_.setText(time.toString());
 				spotTimeCounter_.invalidate();
-				
+
 				spotsOpen_.setText(spotsAvailable.toString());
 				spotsOpen_.postInvalidate();
 			}
-			
+
 		});
 	}
 }

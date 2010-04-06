@@ -24,7 +24,8 @@
 		android:text="3" android:layout_toRightOf="@details/spots_open_as_of"
 		android:layout_alignBaseline="@details/spots_open" android:textSize="20dip" />
 
-	<ImageView android:id="@+details/lot_image"
+	<ImageView android:id="@+details/lot_image" android:src="@drawable/ss"
+		android:scaleType="centerInside" android:adjustViewBounds="false"
 		android:layout_width="wrap_content" android:layout_below="@details/spots_open_as_of"
 		android:layout_centerHorizontal="true" android:layout_height="wrap_content" />
 
