@@ -1,0 +1,1 @@
+Initially for the Vanderbilt University, this project is generically attempting to create a system that can detect open spaces in parking lots.
